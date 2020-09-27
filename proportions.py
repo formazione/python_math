@@ -43,11 +43,12 @@ class Prop:
             return res
         print(res)
 
-print("This is an example")
-# First you create the istance of Prop with a string containing the proposition
-p1 = Prop("12 : 3 = 36 : x")
-# Then you get the solution with calculate_x (method of Prop class)
-print(p1.calculate_x())
-# Second example with same proportion but different incognito
-p2 = Prop("12 : x = 36 : 9")
-print(p2.calculate_x())
+if __name__ == "__main__":
+    print("This is an example")
+    # First you create the istance of Prop with a string containing the proposition
+    p1 = Prop("12 : 3 = 36 : x")
+    # Then you get the solution with calculate_x (method of Prop class)
+    print(p1.calculate_x())
+    # Second example with same proportion but different incognito
+    p2 = Prop("12 : x = 36 : 9")
+    print(p2.calculate_x())
