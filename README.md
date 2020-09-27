@@ -1,3 +1,5 @@
 # python_math
 
-1. Proportions
+## This repository will be full of examples to use python to make math 
+
+1. Proportions (fully commented code)
