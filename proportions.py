@@ -24,31 +24,26 @@ class Prop:
         self.e2 = e2
         self.m1 = m1
         self.m2 = m2
+        self.calculate_x()
 
     def calculate_x(self):
         "Call this from the istance to find the incognito"
-        print(f"The result of '{self.proportion}' is ", end="")
         # Depending on what is None (incognito), it finds it with the other 3
         if self.e1 is None:
             res = self.m1 * self.m2 / self.e2
-            return res
         elif self.e2 is None:
             res = self.m1 * self.m2 / self.e1
-            return res
         elif self.m1 is None:
             res = self.e1 * self.e2 / self.m2
-            return res 
         elif self.m2 is None:
             res = self.e1 * self.e2 / self.m1
-            return res
-        print(res)
+        print(f"The result of the proportion is {res}\n")
+        return res
+
 
 if __name__ == "__main__":
-    print("This is an example")
-    # First you create the istance of Prop with a string containing the proposition
+
     p1 = Prop("12 : 3 = 36 : x")
-    # Then you get the solution with calculate_x (method of Prop class)
-    print(p1.calculate_x())
-    # Second example with same proportion but different incognito
     p2 = Prop("12 : x = 36 : 9")
-    print(p2.calculate_x())
+    # percentage proportion
+    p3 = Prop("100 : 20 = 300 : x")
