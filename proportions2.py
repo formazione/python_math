@@ -2,6 +2,14 @@
 # proportions
 import random
 import os
+import pdfkit
+
+'''
+to install pdfkit
+
+
+'''
+
 
 class Prop:
     def __init__(self, prop):
@@ -27,6 +35,7 @@ class Prop:
         self.m1 = m1
         self.m2 = m2
         self.cnt = 1
+        self.excnt = 1
         self.calculate_x()
 
     def calculate_x(self):
@@ -71,15 +80,16 @@ class Prop:
             self.text += str(self.cnt - 1) + ") " + pstring
             self.text += "   Sol.: ______________________ = __________\n"
             self.text_sol += str(self.cnt - 1) + ") " + pstring + " - Sol:" + str(self.sol) + "\n"
-        return text, text_sol
+        return self.text, self.text_sol
 
     def print_exercizes(self):
-        with open("esercizi.txt", "w") as file:
+        with open(f"ex\\esercizi{self.excnt}.txt", "w") as file:
             file.write(self.text)
-        os.startfile("esercizi.txt")
-        with open("esercizi_sol.txt", "w") as file:
+        # os.startfile(f"esercizi{self.excnt}.txt")
+        with open(f"ex\\esercizi_sol{self.excnt}.txt", "w") as file:
             file.write(self.text_sol)
-        os.startfile("esercizi_sol.txt")
+        # os.startfile(f"esercizi_sol{excnt}.txt")
+        self.excnt += 1
 
 
 
@@ -87,8 +97,21 @@ if __name__ == "__main__":
 
     p1 = Prop("12 : 3 = 36 : x")
     full = ""
+    full_sol = ""
     for n in range(15):
-        text = p1.exercize(10, solution=1)
+        text, text_sol = p1.exercize(10, solution=1)
         p1.print_exercizes()
         full += text
+        full_sol += text_sol
+    # Contains all the exercises in one file
+    with open("ex\\full.txt", "w") as file:
+        file.write(full)
+    pdfkit.from_file("ex\\full.txt", "ex\\full.pdf")
+    os.startfile("ex\\full.txt")
+    with open("ex\\full_sol.txt", "w") as file:
+        file.write(full_sol)
+    pdfkit.from_file("ex\\full_sol.txt", "ex\\full_sol.pdf")
+    os.startfile("ex\\full_sol.txt")
+    # convert to pdf
+
 
